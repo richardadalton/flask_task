@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI", "mongodb://root:password@localhost:27017/?authSource=admin")
 client = MongoClient(app.config["MONGO_URI"])
 
 def get_category_names():
@@ -89,4 +89,4 @@ def add_category():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
