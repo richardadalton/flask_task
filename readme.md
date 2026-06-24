@@ -8,31 +8,41 @@ The categories in the Task Manager are implemented as separate collections in th
 
 ## Installation
 
-Just clone this repository
+Clone the repository:
 
 ```bash
-$ git clone https://github.com/richardadalton/flask_task.git
+git clone https://github.com/richardadalton/flask_task.git
+cd flask_task
 ```
 
-Create the virtual environment, and install dependencies.
+Create the virtual environment and install dependencies:
 
 ```bash
-$ python3 -m venv .venv
-$ . .venv/bin/activate
-$ pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-Edit the docker-compose.yml file to set the root user name and password.
-Run the Docker container.
+## Running locally (PyCharm + Docker MongoDB)
+
+Start MongoDB in Docker:
 
 ```bash
-$ docker-compose up
+docker compose up -d
 ```
 
-Edit the PyCharm run configuration to set the username and password in the MONGO_URI env variable.
+Then run `app.py` from PyCharm or the terminal:
 
+```bash
+python app.py
+```
 
-## Running the task manager
+The app will be available at http://localhost:5000. No environment variables or configuration needed.
 
-Run using the Run Configuration in PyCharm.
+## Running fully containerised
 
+```bash
+docker compose --profile full up --build
+```
+
+Both MongoDB and the Flask app will start. The app will be available at http://localhost:5000.
